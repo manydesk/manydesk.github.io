@@ -335,7 +335,7 @@
         <thead><tr><th scope="col">{{dl.platform}}</th><th scope="col">{{dl.package}}</th><th scope="col">{{dl.req}}</th></tr></thead>
         <tbody>
           <tr><th scope="row">macOS</th><td><a class="dl" data-asset="mac-universal.dmg" href="https://github.com/manydesk/many-desk/releases/latest">{{dl.get}} .dmg<span class="sr-only"> (macOS)</span></a></td><td class="req">{{req.mac}}</td></tr>
-          <tr><th scope="row">Windows</th><td><a class="dl" data-asset="win-x64.exe" href="https://github.com/manydesk/many-desk/releases/latest">{{dl.get}} .exe<span class="sr-only"> (Windows)</span></a></td><td class="req">{{req.win}}</td></tr>
+          <tr><th scope="row">Windows</th><td><a class="dl" data-asset="win-x64-setup.exe" href="https://github.com/manydesk/many-desk/releases/latest">{{dl.installer}}<span class="sr-only"> (Windows)</span></a> · <a class="dl" data-asset="win-x64.exe" href="https://github.com/manydesk/many-desk/releases/latest">{{dl.portable}}<span class="sr-only"> (Windows)</span></a></td><td class="req">{{req.win}}</td></tr>
           <tr><th scope="row">Linux</th><td><a class="dl" data-asset="linux-amd64.deb" href="https://github.com/manydesk/many-desk/releases/latest">amd64 .deb<span class="sr-only"> (Linux x86-64)</span></a> · <a class="dl" data-asset="linux-arm64.deb" href="https://github.com/manydesk/many-desk/releases/latest">arm64 .deb<span class="sr-only"> (Linux ARM)</span></a></td><td class="req">{{req.linux}}</td></tr>
           <tr><th scope="row">Android</th><td><a class="dl" data-asset="android.apk" href="https://github.com/manydesk/many-desk/releases/latest">{{dl.get}} .apk<span class="sr-only"> (Android)</span></a></td><td class="req">{{req.android}}</td></tr>
           <tr><th scope="row">iOS</th><td><a class="dl" href="https://github.com/manydesk/many-desk#building-from-source">{{dl.source}}</a></td><td class="req">{{req.ios}}</td></tr>
@@ -369,7 +369,7 @@
   const meta = document.getElementById("dl-meta");
   const ua = navigator.userAgent;
   const os = /Android/i.test(ua) ? "android" : /iPhone|iPad|iPod/i.test(ua) ? "ios" : /Mac/i.test(ua) ? "mac" : /Win/i.test(ua) ? "win" : /Linux/i.test(ua) ? "linux" : "";
-  const asset = { mac: "mac-universal.dmg", win: "win-x64.exe", linux: /aarch64|arm64/i.test(ua) ? "linux-arm64.deb" : "linux-amd64.deb", android: "android.apk" }[os];
+  const asset = { mac: "mac-universal.dmg", win: "win-x64-setup.exe", linux: /aarch64|arm64/i.test(ua) ? "linux-arm64.deb" : "linux-amd64.deb", android: "android.apk" }[os];
   if (asset) document.getElementById("dl-main-label").textContent = btn.dataset["os" + os[0].toUpperCase() + os.slice(1)];
 
   fetch("https://api.github.com/repos/manydesk/many-desk/releases/latest", { headers: { Accept: "application/vnd.github+json" } })
